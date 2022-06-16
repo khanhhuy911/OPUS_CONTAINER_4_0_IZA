@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen-definitions xmlns="http://www.cyberlogitec.com/screen-definitions">
+	<!-- khanhhuy : 2022-06-16 start -->
+    <screen name="GEN_TRN_0001">
+        <parameter key="title"    value="Error Message Management" direct="true"/>
+        <parameter key="body"     value="apps/opus/clv/gentraining/errmsgmgmt/jsp/GEN_TRN_0001.jsp"/>
+    </screen>
+	<!-- khanhhuy : 2022-06-16 end -->
+
+</screen-definitions>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://www.cyberlogitec.com/mappings">
+	<!-- khanhhuy : 2022-06-16 start -->
+    <url-mapping url="GEN_TRN_0001.do" screen="GEN_TRN_0001.screen" >
+        <web-action-class>com.clt.apps.opus.clv.gentraining.errmsgmgmt.event.GEN_TRN_0001HTMLAction</web-action-class>
+    </url-mapping>
+
+    <url-mapping url="GEN_TRN_0001GS.do" screen="com.clt.framework.core.controller.DefaultViewAdapter" >
+        <web-action-class>com.clt.apps.opus.clv.gentraining.errmsgmgmt.event.GEN_TRN_0001HTMLAction</web-action-class>
+    </url-mapping>
+
+    <event-mapping>
+        <event-class>com.clt.apps.opus.clv.gentraining.errmsgmgmt.event.GenTrn0001Event</event-class>
+        <service-action-class>com.clt.apps.opus.clv.gentraining.GenTrainingSC</service-action-class>
+    </event-mapping>
+	<!-- khanhhuy : 2022-06-16 end -->
+
+</mappings>
