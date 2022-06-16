@@ -78,8 +78,9 @@ public class GenTrainingSC extends ServiceCommandSupport {
 			if (e.getFormCommand().isCommand(FormCommand.SEARCH)) {
 				eventResponse = searchErrMsgVO(e);
 			}
+			// case: insert/update/delete
 			else if (e.getFormCommand().isCommand(FormCommand.MULTI)) {
-				eventResponse = ErrMsgVO(e);
+				eventResponse = modifyErrMsgVO(e);
 			}
 		}
 		return eventResponse;
@@ -99,7 +100,7 @@ public class GenTrainingSC extends ServiceCommandSupport {
 		ErrMsgMgmtBC command = new ErrMsgMgmtBCImpl();
 
 		try{
-			List<ErrMsgVO> list = command.ErrMsgVO(event.getErrMsgVO());
+			List<ErrMsgVO> list = command.searchErrMsgVO(event.getErrMsgVO());
 			eventResponse.setRsVoList(list);
 		}catch(EventException ex){
 			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
@@ -116,14 +117,15 @@ public class GenTrainingSC extends ServiceCommandSupport {
 	 * @return EventResponse
 	 * @exception EventException
 	 */
-	private EventResponse ErrMsgVO(Event e) throws EventException {
+	private EventResponse modifyErrMsgVO(Event e) throws EventException {
 		// PDTO(Data Transfer Object including Parameters)
 		GeneralEventResponse eventResponse = new GeneralEventResponse();
 		GenTrn0001Event event = (GenTrn0001Event)e;
 		ErrMsgMgmtBC command = new ErrMsgMgmtBCImpl();
+		
 		try{
 			begin();
-			command.ErrMsgVO(event.getErrMsgVOS(),account);
+			command.modifyErrMsgVO(event.getErrMsgVOS(),account);
 			eventResponse.setUserMessage(new ErrorHandler("XXXXXXXXX").getUserMessage());
 			commit();
 		} catch(EventException ex) {

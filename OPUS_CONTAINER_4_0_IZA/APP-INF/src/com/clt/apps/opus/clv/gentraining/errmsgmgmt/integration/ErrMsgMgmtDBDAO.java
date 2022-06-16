@@ -47,7 +47,7 @@ public class ErrMsgMgmtDBDAO extends DBDAOSupport {
 	 * @exception DAOException
 	 */
 	 @SuppressWarnings("unchecked")
-	public List<ErrMsgVO> ErrMsgVO(ErrMsgVO errMsgVO) throws DAOException {
+	public List<ErrMsgVO> searchErrMsgVO(ErrMsgVO errMsgVO) throws DAOException {
 		DBRowSet dbRowset = null;
 		List<ErrMsgVO> list = null;
 		//query parameter

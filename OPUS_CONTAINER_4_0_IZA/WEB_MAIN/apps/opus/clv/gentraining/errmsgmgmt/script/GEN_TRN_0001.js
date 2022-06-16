@@ -21,25 +21,13 @@
      * @fileoverview 업무에서 공통으로 사용하는 자바스크립트파일로 달력 관련 함수가 정의되어 있다.
      * @author 한진해운
      */
-
-    /**
-     * @extends 
-     * @class GEN_TRN_0001 : GEN_TRN_0001 생성을 위한 화면에서 사용하는 업무 스크립트를 정의한다.
-     */
-    function GEN_TRN_0001() {
-    	this.processButtonClick		= tprocessButtonClick;
-    	this.setSheetObject 		= setSheetObject;
-    	this.loadPage 				= loadPage;
-    	this.initSheet 				= initSheet;
-    	this.initControl            = initControl;
-    	this.doActionIBSheet 		= doActionIBSheet;
-    	this.setTabObject 			= setTabObject;
-    	this.validateForm 			= validateForm;
-    }
     
    	/* 개발자 작업	*/
     var sheetObjects=new Array();
     var sheetCnt=0;
+    // flag check format message code
+    var flagValidate = true;
+    // click button
     document.onclick=processButtonClick;
     
     function setSheetObject(sheet_obj) {
@@ -123,6 +111,13 @@
    	}
    }
 
+    /**
+     * action when click button
+     * @param sheetObj
+     * @param formObj
+     * @param sAction
+     * @returns
+     */
     function doActionIBSheet(sheetObj,formObj,sAction) {
     	sheetObj.ShowDebugMsg(false);
     	switch (sAction) {
@@ -132,6 +127,7 @@
     		sheetObj.DoSearch("GEN_TRN_0001GS.do", FormQueryString(formObj) );
     		break;
     	case IBSAVE: // save
+    		if (!flagValidate) {return}
     		formObj.f_cmd.value = MULTI;
     		sheetObj.DoSave("GEN_TRN_0001GS.do", FormQueryString(formObj));
     		break;
@@ -149,12 +145,39 @@
     	}
     }
     
+    /**
+     * close loading img
+     * @param sheetObj
+     * @param Code
+     * @param Msg
+     * @param StCode
+     * @param StMsg
+     * @returns
+     */
     function sheet1_OnSearchEnd(sheetObj, Code, Msg, StCode, StMsg) { 
      	ComOpenWait(false);
     }
     
+    /**
+     * setting size of sheet
+     * @returns
+     */
     function resizeSheet(){
-      	         ComResizeSheet(sheetObjects[0]);
+    	ComResizeSheet(sheetObjects[0]);
       }
+        
+    function sheet1_OnEditValidation(sheetObj, Row, Col, Value) {
+    	if (sheetObj.ColSaveName(Col) == 'err_msg_cd') {
+    		var regex = new RegExp(/[A-Z]{3}[0-9]{5}/);
+    		if (!regex.test(Value)) {
+    			ComShowCodeMessage('COM12117',Value);
+    			sheetObj.ValidateFail(1);
+    			flagValidate = false;
+    		} else {
+    			flagValidate = true;
+    		}
+    	}
+    }
+    
 
 	/* 개발자 작업  끝 */
