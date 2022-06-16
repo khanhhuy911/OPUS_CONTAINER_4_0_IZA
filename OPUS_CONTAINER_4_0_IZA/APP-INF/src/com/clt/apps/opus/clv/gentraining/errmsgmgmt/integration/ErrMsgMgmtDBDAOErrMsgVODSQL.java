@@ -34,12 +34,21 @@ public class ErrMsgMgmtDBDAOErrMsgVODSQL implements ISQLTemplate{
 	
 	/**
 	  * <pre>
-	  * 
+	  *    
 	  * </pre>
 	  */
 	public ErrMsgMgmtDBDAOErrMsgVODSQL(){
 		setQuery();
 		params = new HashMap<String,String[]>();
+		String tmp = null;
+		String[] arrTmp = null;
+		tmp = java.sql.Types.VARCHAR + ",N";
+		arrTmp = tmp.split(",");
+		if(arrTmp.length !=2){
+			throw new IllegalArgumentException();
+		}
+		params.put("err_msg_cd",new String[]{arrTmp[0],arrTmp[1]});
+
 		query.append("/*").append("\n"); 
 		query.append("Path : com.clt.apps.opus.clv.gentraining.errmsgmgmt.integration").append("\n"); 
 		query.append("FileName : ErrMsgMgmtDBDAOErrMsgVODSQL").append("\n"); 
@@ -58,6 +67,8 @@ public class ErrMsgMgmtDBDAOErrMsgVODSQL implements ISQLTemplate{
 	 * Query 생성
 	 */
 	public void setQuery(){
-		
+		query.append("DELETE FROM COM_ERR_MSG" ).append("\n"); 
+		query.append("WHERE	ERR_MSG_CD = @[err_msg_cd]" ).append("\n"); 
+
 	}
 }

@@ -34,12 +34,56 @@ public class ErrMsgMgmtDBDAOErrMsgVOCSQL implements ISQLTemplate{
 	
 	/**
 	  * <pre>
-	  * 
+	  *    
 	  * </pre>
 	  */
 	public ErrMsgMgmtDBDAOErrMsgVOCSQL(){
 		setQuery();
 		params = new HashMap<String,String[]>();
+		String tmp = null;
+		String[] arrTmp = null;
+		tmp = java.sql.Types.VARCHAR + ",N";
+		arrTmp = tmp.split(",");
+		if(arrTmp.length !=2){
+			throw new IllegalArgumentException();
+		}
+		params.put("err_msg",new String[]{arrTmp[0],arrTmp[1]});
+
+		tmp = java.sql.Types.VARCHAR + ",N";
+		arrTmp = tmp.split(",");
+		if(arrTmp.length !=2){
+			throw new IllegalArgumentException();
+		}
+		params.put("err_tp_cd",new String[]{arrTmp[0],arrTmp[1]});
+
+		tmp = java.sql.Types.VARCHAR + ",N";
+		arrTmp = tmp.split(",");
+		if(arrTmp.length !=2){
+			throw new IllegalArgumentException();
+		}
+		params.put("err_lvl_cd",new String[]{arrTmp[0],arrTmp[1]});
+
+		tmp = java.sql.Types.VARCHAR + ",N";
+		arrTmp = tmp.split(",");
+		if(arrTmp.length !=2){
+			throw new IllegalArgumentException();
+		}
+		params.put("err_msg_cd",new String[]{arrTmp[0],arrTmp[1]});
+
+		tmp = java.sql.Types.VARCHAR + ",N";
+		arrTmp = tmp.split(",");
+		if(arrTmp.length !=2){
+			throw new IllegalArgumentException();
+		}
+		params.put("cre_usr_id",new String[]{arrTmp[0],arrTmp[1]});
+
+		tmp = java.sql.Types.VARCHAR + ",N";
+		arrTmp = tmp.split(",");
+		if(arrTmp.length !=2){
+			throw new IllegalArgumentException();
+		}
+		params.put("err_desc",new String[]{arrTmp[0],arrTmp[1]});
+
 		query.append("/*").append("\n"); 
 		query.append("Path : com.clt.apps.opus.clv.gentraining.errmsgmgmt.integration").append("\n"); 
 		query.append("FileName : ErrMsgMgmtDBDAOErrMsgVOCSQL").append("\n"); 
@@ -58,6 +102,29 @@ public class ErrMsgMgmtDBDAOErrMsgVOCSQL implements ISQLTemplate{
 	 * Query 생성
 	 */
 	public void setQuery(){
-		
+		query.append("INSERT INTO COM_ERR_MSG (" ).append("\n"); 
+		query.append("	UPD_DT" ).append("\n"); 
+		query.append(",	UPD_USR_ID" ).append("\n"); 
+		query.append(",	CRE_DT" ).append("\n"); 
+		query.append(",	CRE_USR_ID" ).append("\n"); 
+		query.append(",	ERR_DESC" ).append("\n"); 
+		query.append(",	ERR_MSG" ).append("\n"); 
+		query.append(",	ERR_LVL_CD" ).append("\n"); 
+		query.append(",	ERR_TP_CD" ).append("\n"); 
+		query.append(",	LANG_TP_CD" ).append("\n"); 
+		query.append(",	ERR_MSG_CD" ).append("\n"); 
+		query.append(") VALUES( " ).append("\n"); 
+		query.append("	SYSDATE" ).append("\n"); 
+		query.append(",	@[cre_usr_id]" ).append("\n"); 
+		query.append(",	SYSDATE" ).append("\n"); 
+		query.append(",	@[cre_usr_id]" ).append("\n"); 
+		query.append(",	@[err_desc]" ).append("\n"); 
+		query.append(",	@[err_msg]" ).append("\n"); 
+		query.append(",	@[err_lvl_cd]" ).append("\n"); 
+		query.append(",	@[err_tp_cd]" ).append("\n"); 
+		query.append(",	'ENG'" ).append("\n"); 
+		query.append(",	@[err_msg_cd]" ).append("\n"); 
+		query.append(")" ).append("\n"); 
+
 	}
 }
