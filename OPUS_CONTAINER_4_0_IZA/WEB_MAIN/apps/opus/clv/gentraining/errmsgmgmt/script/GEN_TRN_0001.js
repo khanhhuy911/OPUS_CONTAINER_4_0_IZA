@@ -53,15 +53,14 @@
     		with (sheetObj) {
 
     			var HeadTitle = "STS|Del|Msg Cd|Msg Type|Msg Level|Message|Description";
-    			var headCount = ComCountHeadTitle(HeadTitle);
-    			// (headCount, 0, 0, true);
 
-    			SetConfig({SearchMode : 2, MergeSheet : 5, Page : 20, DataRowMerge : 0});
+    			SetConfig({SearchMode : 0, MergeSheet : 0, Page : 20, DataRowMerge : 0, FrozenCol: 4});
 
     			var info = {Sort : 1, ColMove : 1, HeaderCheck : 0, ColResize : 1};
     			var headers = [ { Text : HeadTitle, Align : "Center" }];
     			InitHeaders(headers, info);
 
+    			// define column
     			var cols = [ 
     	             { Type : "Status", 	Hidden : 1, Width : 50,  Align : "Center", ColMerge : 0, SaveName : "ibflag" }, 
     	             { Type : "DelCheck", 	Hidden : 0, Width : 50,  Align : "Center", ColMerge : 0, SaveName : "del_chk" }, 
@@ -69,12 +68,15 @@
     	             { Type : "Combo", 		Hidden : 0, Width : 100, Align : "Center", ColMerge : 0, SaveName : "err_tp_cd",   KeyField : 1, Format : "", UpdateEdit : 1, InsertEdit : 1, ComboText:"Server|UI|Both", ComboCode:"S|U|B" }, 
     	             { Type : "Combo", 		Hidden : 0, Width : 100, Align : "Center", ColMerge : 0, SaveName : "err_lvl_cd",  KeyField : 1, Format : "", UpdateEdit : 1, InsertEdit : 1, ComboText:"ERR|WARNING|INFO", ComboCode:"E|W|I" }, 
     	             { Type : "Text", 		Hidden : 0, Width : 600, Align : "Left",   ColMerge : 0, SaveName : "err_msg",     KeyField : 1, Format : "", UpdateEdit : 1, InsertEdit : 1, MultiLineText:1}, 
-    	             { Type : "Text", 		Hidden : 0, Width : 100, Align : "Left",   ColMerge : 0, SaveName : "err_desc",    KeyField : 1, Format : "", UpdateEdit : 1, InsertEdit : 1} 
+    	             { Type : "Text", 		Hidden : 0, Width : 100, Align : "Left",   ColMerge : 0, SaveName : "err_desc",    KeyField : 1, Format : "", UpdateEdit : 1, InsertEdit : 1}
     	             ];
 
+    			// setting column
     			InitColumns(cols);
     			SetEditable(1);
+    			// hide Wait image
     			SetWaitImageVisible(0);
+    			// setting size fit with screen
     			resizeSheet();
     		}
     		break;
@@ -131,10 +133,10 @@
     		formObj.f_cmd.value = MULTI;
     		sheetObj.DoSave("GEN_TRN_0001GS.do", FormQueryString(formObj));
     		break;
-    	case IBINSERT: //Row Add button event
-    		sheetObj.DataInsert(-1);
+    	case IBINSERT: // Add button event
+    		sheetObj.DataInsert();
     		break;
-    	case IBDELETE: //Row Delete button event
+    	case IBDELETE: //Delete button event
     		for( var i = sheetObj.LastRow(); i >= sheetObj.HeaderRows(); i-- ) {
     			if(sheetObj.GetCellValue(i, "del_chk") == 1){
     				sheetObj.SetRowHidden(i, 1);
@@ -142,11 +144,18 @@
     			}
     		}
     		break;
+		case IBDOWNEXCEL:	//Download Excel button event
+			if(sheetObj.RowCount() < 1){
+				ComShowCodeMessage("COM132501");
+			}else{
+				sheetObj.Down2Excel({DownCols: makeHiddenSkipCol(sheetObj), SheetDesign:1, Merge:1});
+			}
+			break;
     	}
     }
     
     /**
-     * close loading img
+     * close loading imgage
      * @param sheetObj
      * @param Code
      * @param Msg
@@ -166,6 +175,13 @@
     	ComResizeSheet(sheetObjects[0]);
       }
         
+    /**
+     * validate message code when value change
+     * @param sheetObj
+     * @param Row
+     * @param Col
+     * @param Value
+     */
     function sheet1_OnEditValidation(sheetObj, Row, Col, Value) {
     	if (sheetObj.ColSaveName(Col) == 'err_msg_cd') {
     		var regex = new RegExp(/[A-Z]{3}[0-9]{5}/);
