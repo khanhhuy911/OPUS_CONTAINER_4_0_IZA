@@ -13,6 +13,19 @@
         <event-class>com.clt.apps.opus.clv.gentraining.errmsgmgmt.event.GenTrn0001Event</event-class>
         <service-action-class>com.clt.apps.opus.clv.gentraining.GenTrainingSC</service-action-class>
     </event-mapping>
+    
+    <url-mapping url="GEN_TRN_0002.do" screen="GEN_TRN_0002.screen" >
+        <web-action-class>com.clt.apps.opus.clv.gentraining.codemgmt.event.GEN_TRN_0002HTMLAction</web-action-class>
+    </url-mapping>
+
+    <url-mapping url="GEN_TRN_0002GS.do" screen="com.clt.framework.core.controller.DefaultViewAdapter" >
+        <web-action-class>com.clt.apps.opus.clv.gentraining.codemgmt.event.GEN_TRN_0002HTMLAction</web-action-class>
+    </url-mapping>
+
+    <event-mapping>
+        <event-class>com.clt.apps.opus.clv.gentraining.codemgmt.event.GenTrn0002Event</event-class>
+        <service-action-class>com.clt.apps.opus.clv.gentraining.GenTrainingSC</service-action-class>
+    </event-mapping>
 	<!-- khanhhuy : 2022-06-16 end -->
 
 </mappings>

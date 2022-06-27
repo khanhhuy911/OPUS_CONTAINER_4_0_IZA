@@ -73,107 +73,6 @@ public class ErrMsgMgmtDBDAO extends DBDAOSupport {
 		}
 		return list;
 	}
-	
-	/**
-	 * [처리대상] 정보를 [행위] 합니다.<br>
-	 * 
-	 * @param ErrMsgVO errMsgVO
-	 * @exception DAOException
-	 * @exception Exception
-	 */
-	public void addErrMsgVO(ErrMsgVO errMsgVO) throws DAOException,Exception {
-		//query parameter
-		Map<String, Object> param = new HashMap<String, Object>();
-		//velocity parameter
-		Map<String, Object> velParam = new HashMap<String, Object>();
-		try {
-			Map<String, String> mapVO = errMsgVO .getColumnValues();
-			
-			param.putAll(mapVO);
-			velParam.putAll(mapVO);
-			
-			SQLExecuter sqlExe = new SQLExecuter("");
-			int result = sqlExe.executeUpdate((ISQLTemplate)new ErrMsgMgmtDBDAOErrMsgVOCSQL(), param, velParam);
-			if(result == Statement.EXECUTE_FAILED)
-					throw new DAOException("Fail to insert SQL");
-		} catch(SQLException se) {
-			log.error(se.getMessage(),se);
-			throw new DAOException(new ErrorHandler(se).getMessage());
-		} catch(Exception ex) {
-			log.error(ex.getMessage(),ex);
-			throw new DAOException(new ErrorHandler(ex).getMessage());
-		}
-	}
-	
-	/**
-	 * [처리대상] 정보를 [행위] 합니다.<br>
-	 * 
-	 * @param ErrMsgVO errMsgVO
-	 * @return int
-	 * @exception DAOException
-	 * @exception Exception
-	 */
-	public int modifyErrMsgVO(ErrMsgVO errMsgVO) throws DAOException,Exception {
-		//query parameter
-		Map<String, Object> param = new HashMap<String, Object>();
-		//velocity parameter
-		Map<String, Object> velParam = new HashMap<String, Object>();
-		
-		int result = 0;
-		try {
-			Map<String, String> mapVO = errMsgVO .getColumnValues();
-			
-			param.putAll(mapVO);
-			velParam.putAll(mapVO);
-			
-			SQLExecuter sqlExe = new SQLExecuter("");
-			result = sqlExe.executeUpdate((ISQLTemplate)new ErrMsgMgmtDBDAOErrMsgVOUSQL(), param, velParam);
-			if(result == Statement.EXECUTE_FAILED)
-					throw new DAOException("Fail to insert SQL");
-		} catch(SQLException se) {
-			log.error(se.getMessage(),se);
-			throw new DAOException(new ErrorHandler(se).getMessage());
-		} catch(Exception ex) {
-			log.error(ex.getMessage(),ex);
-			throw new DAOException(new ErrorHandler(ex).getMessage());
-		}
-		return result;
-	}
-	
-	/**
-	 * [처리대상] 정보를 [행위] 합니다.<br>
-	 * 
-	 * @param ErrMsgVO errMsgVO
-	 * @return int
-	 * @exception DAOException
-	 * @exception Exception
-	 */
-	public int removeErrMsgVO(ErrMsgVO errMsgVO) throws DAOException,Exception {
-		//query parameter
-		Map<String, Object> param = new HashMap<String, Object>();
-		//velocity parameter
-		Map<String, Object> velParam = new HashMap<String, Object>();
-		
-		int result = 0;
-		try {
-			Map<String, String> mapVO = errMsgVO .getColumnValues();
-			
-			param.putAll(mapVO);
-			velParam.putAll(mapVO);
-			
-			SQLExecuter sqlExe = new SQLExecuter("");
-			result = sqlExe.executeUpdate((ISQLTemplate)new ErrMsgMgmtDBDAOErrMsgVODSQL(), param, velParam);
-			if(result == Statement.EXECUTE_FAILED)
-					throw new DAOException("Fail to insert SQL");
-		} catch(SQLException se) {
-			log.error(se.getMessage(),se);
-			throw new DAOException(new ErrorHandler(se).getMessage());
-		} catch(Exception ex) {
-			log.error(ex.getMessage(),ex);
-			throw new DAOException(new ErrorHandler(ex).getMessage());
-		}
-		return result;
-	}
 
 	/**
 	 * [처리대상] 정보를 [행위] 합니다.<br>
@@ -203,6 +102,7 @@ public class ErrMsgMgmtDBDAO extends DBDAOSupport {
 		}
 		return insCnt;
 	}
+
 	/**
 	 * [처리대상] 정보를 [행위] 합니다.<br>
 	 * 

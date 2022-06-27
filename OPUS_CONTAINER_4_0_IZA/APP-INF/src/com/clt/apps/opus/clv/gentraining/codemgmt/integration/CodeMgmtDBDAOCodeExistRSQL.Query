@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+	<querys>
+		<query name="CodeMgmtDBDAOCodeExistRSQL">
+			<desc><![CDATA[Search first row code master]]></desc>
+			<sql><![CDATA[
+SELECT 
+	INTG_CD_ID
+FROM COM_INTG_CD
+WHERE INTG_CD_ID = @[intg_cd_id]
+AND ROWNUM = 1			]]></sql>
+			<params>
+			</params>
+		</query>
+	</querys>
+</sqls>

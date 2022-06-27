@@ -5,6 +5,10 @@
         <parameter key="title"    value="Error Message Management" direct="true"/>
         <parameter key="body"     value="apps/opus/clv/gentraining/errmsgmgmt/jsp/GEN_TRN_0001.jsp"/>
     </screen>
+    <screen name="GEN_TRN_0002">
+        <parameter key="title"    value="Code Management" direct="true"/>
+        <parameter key="body"     value="apps/opus/clv/gentraining/codemgmt/jsp/GEN_TRN_0002.jsp"/>
+    </screen>
 	<!-- khanhhuy : 2022-06-16 end -->
 
 </screen-definitions>

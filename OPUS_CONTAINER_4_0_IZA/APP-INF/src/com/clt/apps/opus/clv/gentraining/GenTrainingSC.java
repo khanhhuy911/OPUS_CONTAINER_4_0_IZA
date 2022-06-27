@@ -13,6 +13,12 @@
 package com.clt.apps.opus.clv.gentraining;
 
 import java.util.List;
+
+import com.clt.apps.opus.clv.gentraining.codemgmt.basic.CodeMgmtBC;
+import com.clt.apps.opus.clv.gentraining.codemgmt.basic.CodeMgmtBCImpl;
+import com.clt.apps.opus.clv.gentraining.codemgmt.event.GenTrn0002Event;
+import com.clt.apps.opus.clv.gentraining.codemgmt.vo.CodeDetailVO;
+import com.clt.apps.opus.clv.gentraining.codemgmt.vo.CodeVO;
 import com.clt.apps.opus.clv.gentraining.errmsgmgmt.basic.ErrMsgMgmtBC;
 import com.clt.apps.opus.clv.gentraining.errmsgmgmt.basic.ErrMsgMgmtBCImpl;
 import com.clt.apps.opus.clv.gentraining.errmsgmgmt.event.GenTrn0001Event;
@@ -73,7 +79,7 @@ public class GenTrainingSC extends ServiceCommandSupport {
 		// RDTO(Data Transfer Object including Parameters)
 		EventResponse eventResponse = null;
 
-		// SC가 여러 이벤트를 처리하는 경우 사용해야 할 부분
+		// Handle message code
 		if (e.getEventName().equalsIgnoreCase("GenTrn0001Event")) {
 			if (e.getFormCommand().isCommand(FormCommand.SEARCH)) {
 				eventResponse = searchErrMsgVO(e);
@@ -82,9 +88,20 @@ public class GenTrainingSC extends ServiceCommandSupport {
 			else if (e.getFormCommand().isCommand(FormCommand.MULTI)) {
 				eventResponse = modifyErrMsgVO(e);
 			}
+		} else if (e.getEventName().equalsIgnoreCase("GenTrn0002Event")) {
+			if (e.getFormCommand().isCommand(FormCommand.SEARCH01)) {
+				eventResponse = searchCodeVO(e);
+			} else if (e.getFormCommand().isCommand(FormCommand.SEARCH02)) {
+				eventResponse = searchCodeDetailVO(e);
+			} else if (e.getFormCommand().isCommand(FormCommand.MULTI01)) {
+				eventResponse = modifyCodeVO(e);
+			} else if (e.getFormCommand().isCommand(FormCommand.MULTI02)) {
+				eventResponse = modifyCodeDetailVO(e);
+			}
 		}
 		return eventResponse;
 	}
+
 	/**
 	 * GEN_TRN_0001 : [이벤트]<br>
 	 * [비즈니스대상]을 [행위]합니다.<br>
@@ -109,6 +126,7 @@ public class GenTrainingSC extends ServiceCommandSupport {
 		}	
 		return eventResponse;
 	}
+
 	/**
 	 * GEN_TRN_0001 : [이벤트]<br>
 	 * [비즈니스대상]을 [행위]합니다.<br>
@@ -126,7 +144,115 @@ public class GenTrainingSC extends ServiceCommandSupport {
 		try{
 			begin();
 			command.modifyErrMsgVO(event.getErrMsgVOS(),account);
-			eventResponse.setUserMessage(new ErrorHandler("XXXXXXXXX").getUserMessage());
+			eventResponse.setUserMessage(new ErrorHandler("BKG06071").getUserMessage());
+			commit();
+		} catch(EventException ex) {
+			rollback();
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		} catch(Exception ex) {
+			rollback();
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}
+		return eventResponse;
+	}
+	
+	/**
+	 * GEN_TRN_0002 : [이벤트]<br>
+	 * [비즈니스대상]을 [행위]합니다.<br>
+	 * 
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
+	private EventResponse searchCodeVO(Event e) throws EventException {
+		// PDTO(Data Transfer Object including Parameters)
+		GeneralEventResponse eventResponse = new GeneralEventResponse();
+		GenTrn0002Event event = (GenTrn0002Event)e;
+		CodeMgmtBC command = new CodeMgmtBCImpl();
+
+		try{
+			List<CodeVO> list = command.searchCodeVO(event.getCodeVO());
+			eventResponse.setRsVoList(list);
+		}catch(EventException ex){
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}catch(Exception ex){
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}	
+		return eventResponse;
+	}
+	
+	/**
+	 * GEN_TRN_0002 : [이벤트]<br>
+	 * [비즈니스대상]을 [행위]합니다.<br>
+	 * 
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
+	private EventResponse searchCodeDetailVO(Event e) throws EventException {
+		// PDTO(Data Transfer Object including Parameters)
+		GeneralEventResponse eventResponse = new GeneralEventResponse();
+		GenTrn0002Event event = (GenTrn0002Event)e;
+		CodeMgmtBC command = new CodeMgmtBCImpl();
+
+		try{
+			List<CodeDetailVO> list = command.searchCodeDetailVO(event.getCodeDetailVO());
+			eventResponse.setRsVoList(list);
+		}catch(EventException ex){
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}catch(Exception ex){
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}	
+		return eventResponse;
+	}
+	
+	/**
+	 * GEN_TRN_0002 : [이벤트]<br>
+	 * [비즈니스대상]을 [행위]합니다.<br>
+	 *
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
+	private EventResponse modifyCodeVO(Event e) throws EventException {
+		// PDTO(Data Transfer Object including Parameters)
+		GeneralEventResponse eventResponse = new GeneralEventResponse();
+		GenTrn0002Event event = (GenTrn0002Event)e;
+		CodeMgmtBC command = new CodeMgmtBCImpl();
+		
+		try{
+			begin();
+			command.modifyCodeVO(event.getCodeVOS(),account);
+			eventResponse.setUserMessage(new ErrorHandler("BKG06071").getUserMessage());
+			commit();
+		} catch(EventException ex) {
+			rollback();
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		} catch(Exception ex) {
+			rollback();
+			throw new EventException(new ErrorHandler(ex).getMessage(),ex);
+		}
+		return eventResponse;
+	}
+	
+	/**
+	 * GEN_TRN_0002 : [이벤트]<br>
+	 * [비즈니스대상]을 [행위]합니다.<br>
+	 *
+	 * @param Event e
+	 * @return EventResponse
+	 * @exception EventException
+	 */
+	private EventResponse modifyCodeDetailVO(Event e) throws EventException {
+		// PDTO(Data Transfer Object including Parameters)
+		GeneralEventResponse eventResponse = new GeneralEventResponse();
+		GenTrn0002Event event = (GenTrn0002Event)e;
+		CodeMgmtBC command = new CodeMgmtBCImpl();
+		
+		try{
+			begin();
+			command.modifyCodeDetailVO(event.getCodeDetailVOS(),account);
+			eventResponse.setUserMessage(new ErrorHandler("BKG06071").getUserMessage());
 			commit();
 		} catch(EventException ex) {
 			rollback();
