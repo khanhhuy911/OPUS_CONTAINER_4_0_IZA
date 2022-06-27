@@ -57,7 +57,6 @@
 		out.println(e.toString());
 	}
 %>
-<html>
 <body  onLoad="setupPage();">
 <script language="javascript">
 	function setupPage(){
@@ -110,4 +109,3 @@
 <!-- 개발자 작업  끝 -->
 </form>
 </body>
-</html>
