@@ -11,4 +11,11 @@
     </screen>
 	<!-- khanhhuy : 2022-06-16 end -->
 
+	<!-- Khanh Huy : 2022-06-27 start -->
+    <screen name="GEN_TRN_0004">
+        <parameter key="title"    value="Carrier Management" direct="true"/>
+        <parameter key="body"     value="apps/opus/clv/carrier/carriermgmt/jsp/GEN_TRN_0004.jsp"/>
+    </screen>
+	<!-- Khanh Huy : 2022-06-27 end -->
+
 </screen-definitions>

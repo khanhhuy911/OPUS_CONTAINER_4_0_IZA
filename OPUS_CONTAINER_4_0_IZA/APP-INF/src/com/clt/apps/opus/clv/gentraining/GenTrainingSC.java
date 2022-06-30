@@ -37,7 +37,7 @@ import com.clt.apps.opus.clv.gentraining.errmsgmgmt.vo.ErrMsgVO;
  * ALPS-GenTraining Business Logic ServiceCommand - ALPS-GenTraining 대한 비지니스 트랜잭션을 처리한다.
  * 
  * @author khanhhuy
- * @see ErrMsgMgmtDBDAO
+ * @see CarrierMgmtDBDAO
  * @since J2EE 1.6
  */
 

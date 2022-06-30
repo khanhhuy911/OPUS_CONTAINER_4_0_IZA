@@ -31,7 +31,7 @@ import com.clt.apps.opus.dou.doutraining.errmsgmgmt.vo.ErrMsgVO;
  * ALPS-DouTraining Business Logic ServiceCommand - ALPS-DouTraining 대한 비지니스 트랜잭션을 처리한다.
  * 
  * @author Vi Nguyen
- * @see ErrMsgMgmtDBDAO
+ * @see CarrierMgmtDBDAO
  * @since J2EE 1.6
  */
 

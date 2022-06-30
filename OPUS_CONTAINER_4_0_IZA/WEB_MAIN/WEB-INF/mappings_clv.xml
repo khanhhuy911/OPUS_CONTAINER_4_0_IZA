@@ -28,4 +28,19 @@
     </event-mapping>
 	<!-- khanhhuy : 2022-06-16 end -->
 
+	<!-- Khanh Huy : 2022-06-27 start -->
+    <url-mapping url="GEN_TRN_0004.do" screen="GEN_TRN_0004.screen" >
+        <web-action-class>com.clt.apps.opus.clv.carrier.carriermgmt.event.GEN_TRN_0004HTMLAction</web-action-class>
+    </url-mapping>
+
+    <url-mapping url="GEN_TRN_0004GS.do" screen="com.clt.framework.core.controller.DefaultViewAdapter" >
+        <web-action-class>com.clt.apps.opus.clv.carrier.carriermgmt.event.GEN_TRN_0004HTMLAction</web-action-class>
+    </url-mapping>
+
+    <event-mapping>
+        <event-class>com.clt.apps.opus.clv.carrier.carriermgmt.event.GenTrn0004Event</event-class>
+        <service-action-class>com.clt.apps.opus.clv.carrier.CarrierSC</service-action-class>
+    </event-mapping>
+	<!-- Khanh Huy : 2022-06-27 end -->
+
 </mappings>
