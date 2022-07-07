@@ -18,4 +18,11 @@
     </screen>
 	<!-- Khanh Huy : 2022-06-27 end -->
 
+	<!-- Khanh Huy : 2022-07-04 start -->
+    <screen name="GEN_TRN_0003">
+        <parameter key="title"    value="Invoice Management" direct="true"/>
+        <parameter key="body"     value="apps/opus/clv/invoice/invoicemgmt/jsp/GEN_TRN_0003.jsp"/>
+    </screen>
+	<!-- Khanh Huy : 2022-07-04 end -->
+
 </screen-definitions>

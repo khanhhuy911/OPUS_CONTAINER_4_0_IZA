@@ -43,4 +43,23 @@
     </event-mapping>
 	<!-- Khanh Huy : 2022-06-27 end -->
 
+	<!-- Khanh Huy : 2022-07-04 start -->
+    <url-mapping url="GEN_TRN_0003.do" screen="GEN_TRN_0003.screen" >
+        <web-action-class>com.clt.apps.opus.clv.invoice.invoicemgmt.event.GEN_TRN_0003HTMLAction</web-action-class>
+    </url-mapping>
+
+    <url-mapping url="GEN_TRN_0003GS.do" screen="com.clt.framework.core.controller.DefaultViewAdapter" >
+        <web-action-class>com.clt.apps.opus.clv.invoice.invoicemgmt.event.GEN_TRN_0003HTMLAction</web-action-class>
+    </url-mapping>
+
+    <event-mapping>
+        <event-class>com.clt.apps.opus.clv.invoice.invoicemgmt.event.GenTrn0003Event</event-class>
+        <service-action-class>com.clt.apps.opus.clv.invoice.InvoiceSC</service-action-class>
+    </event-mapping>
+
+    <url-mapping url="GEN_TRN_0003DL.do" screen="com.clt.apps.opus.clv.invoice.invoicemgmt.event.InvoiceViewAdapterDL" >
+        <web-action-class>com.clt.apps.opus.clv.invoice.invoicemgmt.event.GEN_TRN_0003HTMLAction</web-action-class>
+    </url-mapping>
+	<!-- Khanh Huy : 2022-07-04 end -->
+
 </mappings>
