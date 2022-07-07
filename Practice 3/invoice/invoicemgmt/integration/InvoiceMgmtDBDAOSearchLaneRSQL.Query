@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls>
+	<querys>
+		<query name="InvoiceMgmtDBDAOSearchLaneRSQL">
+			<desc><![CDATA[Search RLANE_CD]]></desc>
+			<sql><![CDATA[
+SELECT 
+	DISTINCT(RLANE_CD)
+FROM JOO_CARRIER
+WHERE	JO_CRR_CD IN (${jo_crr_cd})			]]></sql>
+			<params>
+			</params>
+		</query>
+	</querys>
+</sqls>
