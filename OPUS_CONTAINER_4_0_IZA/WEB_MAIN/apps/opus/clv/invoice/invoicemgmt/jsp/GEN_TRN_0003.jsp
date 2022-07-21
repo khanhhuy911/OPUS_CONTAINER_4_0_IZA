@@ -71,6 +71,7 @@
 		loadPage();
 	}
 </script>
+<script language="javascript" type="text/javascript" src="apps/opus/clv/invoice/invoicemgmt/script/InvoiceMessage.js"></script>
 <form name="form">
 <input type="hidden" name="f_cmd">
 <input type="hidden" name="pagerows">
@@ -91,25 +92,35 @@
 			<span id="navigation"></span>
 		</div>
 	</div>
-	<div class="wrap_search">
-		<div class="opus_design_inquiry">
+	<div class="wrap_search_tab">
+		<div class="opus_design_inquiry wFit">
 			<table>
+			<colgroup>
+				<col width="100">
+				<col width="350">
+				<col width="70">
+				<col width="70">
+				<col width="70">
+				<col width="70">
+				<col width="70">
+				<col width="*">
+			</colgroup>
 				<tbody>
 					<tr>
-						<th width="100">Year Month</th>
-						<td width="350">
-							<input type="text" style="width: 100px;" onChange="changeMonth()" class="input" value="" name="acct_yrmon_from" id="acct_yrmon_from"><!--
+						<th>Year Month</th>
+						<td>
+							<input type="text" style="width: 100px;" class="input" value="" name="acct_yrmon_from" id="acct_yrmon_from"><!--
 							--><button type="button" class="btn_left" name="btn_datefrom_down" id="btn_datefrom_down"></button><!--
 							--><button type="button" class="btn_right" name="btn_datefrom_up" id="btn_datefrom_up"></button><!--
-							--><input type="text" style="width: 100px;" onChange="changeMonth()" class="input" value="" name="acct_yrmon_to" id="acct_yrmon_to"><!--
+							--><input type="text" style="width: 100px;" class="input" value="" name="acct_yrmon_to" id="acct_yrmon_to"><!--
 							--><button type="button" class="btn_left" name="btn_dateto_down" id="btn_dateto_down"></button><!--
 							--><button type="button" class="btn_right" name="btn_dateto_up" id="btn_dateto_up"></button>
 						</td>
-						<th width="70">Partner</th>
-						<td width="70"><script type="text/javascript">ComComboObject('s_jo_crr_cd', 1, 100, 1, 0, 0);</script></td>
-						<th width="70">Lane</th>
-						<td width="70"><script type="text/javascript">ComComboObject('s_rlane_cd', 1, 100, 1, 0, 0);</script></td>
-						<th width="70">Trade</th>
+						<th>Partner</th>
+						<td><script type="text/javascript">ComComboObject('s_jo_crr_cd', 1, 100, 1, 0, 0);</script></td>
+						<th>Lane</th>
+						<td><script type="text/javascript">ComComboObject('s_rlane_cd', 1, 100, 1, 0, 0);</script></td>
+						<th>Trade</th>
 						<td><script type="text/javascript">ComComboObject('s_trade_cd', 1, 100, 1, 0, 0);</script></td>
 					</tr>
 				</tbody>

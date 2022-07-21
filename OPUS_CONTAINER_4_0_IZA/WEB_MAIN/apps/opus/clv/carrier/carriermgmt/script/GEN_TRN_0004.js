@@ -68,6 +68,7 @@ function loadPage(){
 	for(i=0; i<comboObjects.length; i++){
 		initCombo(comboObjects[i], i+1);
 	}
+	initControl();
 }
 
 /**
@@ -153,6 +154,13 @@ function addComboItem(comboObj, comboItems) {
 	for (var i=0 ; i < comboItems.length ; i++) {
 		comboObj.InsertItem(i, comboItems[i], comboItems[i]);
 	}   		
+}
+
+/**
+ * Setting init control
+ */
+function initControl() {
+	document.getElementById("s_vndr_seq").addEventListener('change', function() {checkVendor();});
 }
 
 /**
@@ -354,7 +362,7 @@ function validateForm() {
     var creDtTo = document.getElementById("s_cre_dt_to"); //get value from date to
 
     // Check Vendor code
-    if (!CheckVendor()) {
+    if (!checkVendor()) {
     	return false
     }
     // Check format date
@@ -372,7 +380,11 @@ function validateForm() {
     return true;
 }
 
-function CheckVendor() {
+/**
+ * Check input of Vendor
+ * @returns {Boolean}
+ */
+function checkVendor() {
     var vendor = document.getElementById("s_vndr_seq");
     // Check Vendor code
     if (vendor.value != "" && !vendor.value.isNumber()) {

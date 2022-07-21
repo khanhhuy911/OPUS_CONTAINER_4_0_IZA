@@ -119,7 +119,7 @@ public class ErrMsgMgmtDBDAO extends DBDAOSupport {
 				updCnt = sqlExe.executeBatch((ISQLTemplate)new ErrMsgMgmtDBDAOErrMsgVOUSQL(), errMsgVO,null);
 				for(int i = 0; i < updCnt.length; i++){
 					if(updCnt[i]== Statement.EXECUTE_FAILED)
-						throw new DAOException("Fail to insert No"+ i + " SQL");
+						throw new DAOException("Fail to update No"+ i + " SQL");
 				}
 			}
 		} catch(SQLException se) {
@@ -148,7 +148,7 @@ public class ErrMsgMgmtDBDAO extends DBDAOSupport {
 				delCnt = sqlExe.executeBatch((ISQLTemplate)new ErrMsgMgmtDBDAOErrMsgVODSQL(), errMsgVO,null);
 				for(int i = 0; i < delCnt.length; i++){
 					if(delCnt[i]== Statement.EXECUTE_FAILED)
-						throw new DAOException("Fail to insert No"+ i + " SQL");
+						throw new DAOException("Fail to delete No"+ i + " SQL");
 				}
 			}
 		} catch(SQLException se) {

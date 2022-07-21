@@ -84,13 +84,19 @@
 	    </div>
 	</div>
 		<div class="wrap_search">
-		<div class="opus_design_inquiry">
+		<div class="opus_design_inquiry wFit">
 		    <table>
+		    <colgroup>
+		    	<col width="40"></col>
+		    	<col width="120"></col>
+		    	<col width="40"></col>
+		    	<col width="*"></col>
+		    </colgroup>
 		        <tbody>
 				<tr>
-				   <th width="40">Subsystem</th>
-				<td width="120"><input type="text" style="width:100px;" class="input" value="" name="s_subsystem" id="s_subsystem"></td>
-				<th width="40">Cd ID</th>
+				<th>Subsystem</th>
+				<td><input type="text" style="width:100px;" class="input" value="" name="s_subsystem" id="s_subsystem"></td>
+				<th>Cd ID</th>
 				<td><input type="text" style="width:100px;" class="input" value="" name="s_cd_id" id="s_cd_id"></td>
 				</tr> 
 				</tbody>

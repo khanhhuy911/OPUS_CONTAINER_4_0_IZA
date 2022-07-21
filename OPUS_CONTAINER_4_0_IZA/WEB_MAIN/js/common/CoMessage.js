@@ -142,7 +142,6 @@
 	msgs['COM130405'] = '{?msg1} was searched successfully.';
 	msgs['COM130406'] = 'Failed to search {?msg1}. Please try again.';
 	msgs['COM130407'] = '{?msg1} doesn\'t exist. Do you want to create this code ?' ;
-	msgs['COM130408'] = 'Year Month over 3 months, do you realy want to get data?' ;
 
 	
 	// update message 

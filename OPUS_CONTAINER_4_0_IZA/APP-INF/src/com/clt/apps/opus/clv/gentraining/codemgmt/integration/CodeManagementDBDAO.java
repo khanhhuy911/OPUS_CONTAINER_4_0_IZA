@@ -154,7 +154,7 @@ public class CodeManagementDBDAO extends DBDAOSupport {
 				updCnt = sqlExe.executeBatch((ISQLTemplate) new CodeMgmtDBDAOCodeUSQL(), codeVOS, null);
 				for (int i = 0; i < updCnt.length; i++) {
 					if (updCnt[i] == Statement.EXECUTE_FAILED)
-						throw new DAOException("Fail to insert No" + i + " SQL");
+						throw new DAOException("Fail to update No" + i + " SQL");
 				}
 			}
 		} catch (SQLException se) {
@@ -184,7 +184,7 @@ public class CodeManagementDBDAO extends DBDAOSupport {
 				delCnt = sqlExe.executeBatch((ISQLTemplate) new CodeMgmtDBDAOCodeDSQL(), codeVOS, null);
 				for (int i = 0; i < delCnt.length; i++) {
 					if (delCnt[i] == Statement.EXECUTE_FAILED)
-						throw new DAOException("Fail to insert No" + i + " SQL");
+						throw new DAOException("Fail to delete No" + i + " SQL");
 				}
 			}
 		} catch (SQLException se) {
@@ -314,7 +314,7 @@ public class CodeManagementDBDAO extends DBDAOSupport {
 				updCnt = sqlExe.executeBatch((ISQLTemplate) new CodeMgmtDBDAOCodeDetailUSQL(), codeDetailVOS, null);
 				for (int i = 0; i < updCnt.length; i++) {
 					if (updCnt[i] == Statement.EXECUTE_FAILED)
-						throw new DAOException("Fail to insert No" + i + " SQL");
+						throw new DAOException("Fail to update No" + i + " SQL");
 				}
 			}
 		} catch (SQLException se) {
@@ -344,7 +344,7 @@ public class CodeManagementDBDAO extends DBDAOSupport {
 				delCnt = sqlExe.executeBatch((ISQLTemplate) new CodeMgmtDBDAOCodeDetailDSQL(), codeDetailVOS, null);
 				for (int i = 0; i < delCnt.length; i++) {
 					if (delCnt[i] == Statement.EXECUTE_FAILED)
-						throw new DAOException("Fail to insert No" + i + " SQL");
+						throw new DAOException("Fail to delete No" + i + " SQL");
 				}
 			}
 		} catch (SQLException se) {

@@ -84,14 +84,20 @@
 	</div>
 	
 	<div class="wrap_search">
-		<div class="opus_design_inquiry">
+		<div class="opus_design_inquiry wFit">
 		    <table>
+		    	<colgroup>
+		    		<col width="40"></col>
+		    		<col width="120"></col>
+		    		<col width="40"></col>
+		    		<col width="*"></col>
+		    	</colgroup>
 		        <tbody>
 				<tr>
-				   <th width="40">Message Code</th>
-				<td width="120"><input type="text" style="width:100px;" class="input" value="" name="s_err_msg_cd" id="s_err_msg_cd"></td>
-				<th width="40">Message</th>
-				<td><input type="text" style="width:100px;" class="input" value="" name="s_err_msg" id="s_err_msg"></td>
+				   <th>Message Code</th>
+					<td><input type="text" style="width:100px;" class="input" value="" name="s_err_msg_cd" id="s_err_msg_cd"></td>
+					<th>Message</th>
+					<td><input type="text" style="width:100px;" class="input" value="" name="s_err_msg" id="s_err_msg"></td>
 				</tr> 
 				</tbody>
 			</table>

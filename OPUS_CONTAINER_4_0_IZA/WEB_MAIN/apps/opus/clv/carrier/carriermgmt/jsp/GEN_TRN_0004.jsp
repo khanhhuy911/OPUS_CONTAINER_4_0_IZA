@@ -95,24 +95,24 @@
 </div>
 
 <div class="wrap_search">
-	<div class="opus_design_inquiry">
+	<div class="opus_design_inquiry wFit">
 		<table>
 			<colgroup>
-				<col style="width: 50px">
-				<col style="width: 150px">
-				<col style="width: 50px">
-				<col style="width: 350px">
-				<col style="width: 100px">
+				<col width="50">
+				<col width="150">
+				<col width="50">
+				<col width="230">
+				<col width="100">
+				<col width="*">
 			</colgroup>
 			<tbody>
 				<tr>
-					<th width="50">Carrier</th>
-					<td width="150"><script type="text/javascript">ComComboObject('s_jo_crr_cd',1,120, 1, 0, 0);</script></td>
-					<th width="50">Vendor</th>
-					<td width="350">
-						<input type="text" style="width:200px;" onchange="CheckVendor()" placeholder="Please type number code" class="input" value="" name="s_vndr_seq" id="s_vndr_seq" maxlength="6">
+					<th>Carrier</th>
+					<td><script type="text/javascript">ComComboObject('s_jo_crr_cd',1,120, 1, 0, 0);</script></td>
+					<th>Vendor</th>
+					<td><input type="text" style="width:200px;" placeholder="Please type number code" class="input" value="" name="s_vndr_seq" id="s_vndr_seq" maxlength="6">
 					</td>
-					<th width="100" style="text-align: center;">Create Date</th>
+					<th style="text-align: center;">Create Date</th>
 					<td>
 						<input type="text" style="width:100px;text-align:center;" placeholder="YYYY-MM-DD" name="s_cre_dt_fr" id="s_cre_dt_fr" maxLength="10"><!--  
 						--><button type="button" class="calendar ir" name="btn_calendar_fr" id="btn_calendar_fr" tabindex="-1"></button>~
