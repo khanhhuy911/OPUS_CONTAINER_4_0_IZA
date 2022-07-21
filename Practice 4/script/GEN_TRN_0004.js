@@ -372,6 +372,10 @@ function validateForm() {
     return true;
 }
 
+/**
+ * Check input of Vendor
+ * @returns {Boolean}
+ */
 function CheckVendor() {
     var vendor = document.getElementById("s_vndr_seq");
     // Check Vendor code
